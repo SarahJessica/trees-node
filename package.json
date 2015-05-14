@@ -13,7 +13,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "lab -v -c -t 100 -L -n eslint -e test",
-    "coverage": "lab -s -r lcov | coveralls"
+    "cov": "lab -s -r lcov | coveralls"
   },
   "devDependencies": {
     "chai": "^2.3.0",
