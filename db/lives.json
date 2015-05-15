@@ -1,0 +1,38 @@
+[
+  {
+    "name": "seedling",
+    "min": 0,
+    "max": 10,
+    "url": "/assets/trees/seedling.jpg"
+  },
+  {
+    "name": "sapling",
+    "min": 11,
+    "max": 40,
+    "url": "/assets/trees/sapling.jpg"
+  },
+  {
+    "name": "young",
+    "min": 41,
+    "max": 60,
+    "url": "/assets/trees/young.jpg"
+  },
+  {
+    "name": "mature",
+    "min": 61,
+    "max": 140,
+    "url": "/assets/trees/mature.jpg"
+  },
+  {
+    "name": "old mature",
+    "min": 141,
+    "max": 250,
+    "url": "/assets/trees/oldMature.jpg"
+  },
+  {
+    "name": "beanstalk",
+    "min": 251,
+    "max": 2500,
+    "url": "/assets/trees/beanstalk.jpg"
+  }
+]
