@@ -45,7 +45,7 @@ describe('GET /trees', function(){
   it('should return users trees', function(done){
     server.inject({method: 'GET', url: '/trees', credentials: {_id: 'a12345678901234567890011'}}, function(response){
       expect(response.statusCode).to.equal(200);
-      expect(response.result.trees).to.have.length(1);
+      expect(response.result.trees).to.have.length(2);
       done();
     });
   });

@@ -16,6 +16,7 @@ var it = lab.test;
 var before = lab.before;
 var after = lab.after;
 var beforeEach = lab.beforeEach;
+var Tree = require('../../../../lib/models/tree');
 
 
 var server;
@@ -63,6 +64,24 @@ describe('PUT /trees/{id}/grow', function(){
     server.inject({method: 'PUT', url: '/trees/a000a000a000a000a000a000/grow', credentials: {_id: 'a12345678901234567890012'}}, function(response){
       expect(response.statusCode).to.equal(200);
       expect(response.result.height).to.equal(4);
+      stub.restore();
+      done();
+    });
+  });
+  it('should return an error', function(done){
+    var stub = Sinon.stub(Tree, 'findOne').yields(new Error());
+    server.inject({method: 'PUT', url: '/trees/a000a000a000a000a000a000/grow', credentials: {_id: 'a12345678901234567890012'}}, function(response){
+      expect(response.statusCode).to.equal(400);
+      stub.restore();
+      done();
+    });
+  });
+  it('should not exceed 90% chance of damage', function(done){
+    var stub = Sinon.stub(Math, 'random');
+    stub.onCall(0).returns(0).onCall(1).returns(0.9);
+    server.inject({method: 'PUT', url: '/trees/d000a000a000a000a000a000/grow', credentials: {_id: 'a12345678901234567890011'}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result.health).to.equal(41);
       stub.restore();
       done();
     });
