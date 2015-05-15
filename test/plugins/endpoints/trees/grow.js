@@ -86,4 +86,14 @@ describe('PUT /trees/{id}/grow', function(){
       done();
     });
   });
+  it('should not a tree beyond 2500', function(done){
+    var stub = Sinon.stub(Math, 'random');
+    stub.onCall(0).returns(0.99).onCall(1).returns(0.9);
+    server.inject({method: 'PUT', url: '/trees/e000a000a000a000a000a000/grow', credentials: {_id: 'a12345678901234567890013'}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result.height).to.equal(2500);
+      stub.restore();
+      done();
+    });
+  });
 });
